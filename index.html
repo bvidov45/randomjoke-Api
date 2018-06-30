@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Item Manager!</title>
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">Item Manager</a>
+       
+  
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="file:///C:/xampp/htdocs/itemmanager/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+     <div class="container">
+       <h1>Add Item</h1>
+       <form action="" method="">
+
+
+       </form>
+
+       <hr>
+       <ul class="list-group" id="items">
+
+       </ul>
+     </div>
+
+
+
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.js"
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+
+
+    $(document).ready(function(){
+
+      getItems();
+      function getItems(){
+        $.ajax({
+          url: 'http://api.icndb.com/jokes/random/'
+        }).done(function(items){
+          let output = '';
+          $.each(items, function(key, item){
+            output = `
+            <li class="list-group-item">
+            ${item.joke}
+            </li>
+            `;
+          });
+
+          $('#items').append(output);
+        });
+      }
+    });
+    
+    
+    
+    
+
+
+
+
+    </script>
+  </body>
+</html>
